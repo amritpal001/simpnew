@@ -48,6 +48,37 @@ const isGitHub = (
     process.env.GITHUB_SERVER_URL !== undefined
 )
 
+const APPLICATION_ID = process.env.APPLICATION_ID 
+const TOKEN = process.env.DISCORD_TOKEN 
+const PUBLIC_KEY = process.env.PUBLIC_KEY || 'not set'
+const GUILD_ID = process.env.GUILD_ID 
+
+
+const axios = require('axios')
+const express = require('express');
+const { InteractionType, InteractionResponseType, verifyKeyMiddleware } = require('discord-interactions');
+
+
+const app = express();
+// app.use(bodyParser.json());
+
+const discord_api = axios.create({
+  baseURL: 'https://discord.com/api/',
+  timeout: 3000,
+  headers: {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+	"Access-Control-Allow-Headers": "Authorization",
+	"Authorization": `Bot ${TOKEN}`
+  }
+});
+
+
+
+
+app.post('/interactions', verifyKeyMiddleware(PUBLIC_KEY), async (req, res) => {
+  const interaction = req.body;
+}
 function npmInstall(deleteDir = false, forceInstall = false, additionalArgs = []) {
     if (deleteDir) {
         const modulesPath = resolve(process.cwd(), "node_modules");
