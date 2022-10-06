@@ -17,7 +17,7 @@ import { ColorResolvable } from "discord.js";
 export class PingCommand extends BaseCommand {
     public async execute(ctx: CommandContext): Promise<void> {
         if (ctx.isInteraction() && !ctx.deferred) await ctx.deferReply();
-        const before = Date.now();
+        const before = Date.now() - msg.createdTimestamp;
         const msg = await ctx.reply({ content: "🏓" });
         const latency = Date.now() - before;
         const wsLatency = this.client.ws.ping.toFixed(0);
@@ -30,12 +30,12 @@ export class PingCommand extends BaseCommand {
             })
             .addFields(
                 {
-                    name: "📶 **|** API",
+                    name: "📶 **|** Ping",
                     value: `**\`${latency}\`** ms`,
                     inline: true
                 },
                 {
-                    name: "🌐 **|** WebSocket",
+                    name: "🌐 **|**Bot Ping",
                     value: `**\`${wsLatency}\`** ms`,
                     inline: true
                 },
