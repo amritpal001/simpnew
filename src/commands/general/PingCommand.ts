@@ -17,8 +17,9 @@ import { ColorResolvable } from "discord.js";
 export class PingCommand extends BaseCommand {
     public async execute(ctx: CommandContext): Promise<void> {
         if (ctx.isInteraction() && !ctx.deferred) await ctx.deferReply();
-        const before = Date.now() - msg.createdTimestamp;
+
         const msg = await ctx.reply({ content: "🏓" });
+        const before = Date.now() - msg.createdTimestamp;
         const latency = Date.now() - before;
         const wsLatency = this.client.ws.ping.toFixed(0);
         const vcLatency = ctx.guild?.queue?.connection?.ping.ws?.toFixed(0) ?? "N/A";
