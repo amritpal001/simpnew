@@ -48,6 +48,18 @@ const isGitHub = (
     process.env.GITHUB_SERVER_URL !== undefined
 )
 
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
 function npmInstall(deleteDir = false, forceInstall = false, additionalArgs = []) {
     if (deleteDir) {
         const modulesPath = resolve(process.cwd(), "node_modules");
