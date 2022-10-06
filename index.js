@@ -99,18 +99,6 @@ if (isGitHub) {
     console.warn("[WARN] Running this bot using GitHub is not recommended.");
 }
 
-const express = require('express')
-const app = express()
-const port = 3000
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-
 const require = module.createRequire(import.meta.url);
 
 if (!isGlitch) {
@@ -145,5 +133,18 @@ if (streamStrategy === "play-dl") {
         console.info("[INFO] Play-dl has been installed.");
     }
 }
+
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
 console.info("[INFO] Starting the bot...");
 import("./dist/index.js");
