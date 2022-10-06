@@ -19,7 +19,7 @@ export class PingCommand extends BaseCommand {
         if (ctx.isInteraction() && !ctx.deferred) await ctx.deferReply();
 
         const msg = await ctx.reply({ content: "🏓" });
-        const before = Date.now() - msg.createdTimestamp;
+        const before = msg.createdTimestamp;
         const latency = Date.now() - before;
         const wsLatency = this.client.ws.ping.toFixed(0);
         const vcLatency = ctx.guild?.queue?.connection?.ping.ws?.toFixed(0) ?? "N/A";
