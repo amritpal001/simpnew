@@ -4,7 +4,7 @@ import { createTable } from "../../utils/functions/createTable";
 import { BaseCommand } from "../../structures/BaseCommand";
 import { formatMS } from "../../utils/functions/formatMS";
 import { Command } from "../../utils/decorators/Command";
-import rawonData from "../../package.json";
+import rawonData from "../../../package.json";
 import i18n from "../../config";
 import { version as DJSVersion } from "discord.js";
 import { uptime } from "os";
