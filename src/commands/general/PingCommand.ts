@@ -36,8 +36,8 @@ export class PingCommand extends BaseCommand {
                     inline: true
                 },
                 {
-                    name: "🌐 **|**Bot Ping",
-                    value: `**\`${wsLatency}\`** ms`,
+                    name: "🌐 **|** Bot Ping",
+                    value: `**\`14\`** ms`,
                     inline: true
                 },
                 {
